@@ -47,17 +47,11 @@ git clone https://github.com/wb73-eu/etlt-pipeline.git
 cd etlt-pipeline
 ```
 
-2. Run the setup script:
+2. Run the run script:
 
 ```bash
-chmod +x run.sh
 ./run.sh
 ```
-
-This will automatically:
-- Generate your `.env` with the correct values
-- Create the required folders (`airflow/logs`, `minio-data`)
-- Start all services via Docker Compose
 
 3. Download the dataset from [Kaggle - Flight Data 2024](https://www.kaggle.com/datasets/hrishitpatil/flight-data-2024) and upload it to MinIO:
    - Open MinIO at `http://localhost:9001` (credentials: `minio` / `secretpassword`)
