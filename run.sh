@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-echo "🚀 Setting up etlt-pipeline..."
+echo "Setting up etlt-pipeline..."
 
 # Check dependencies
 for cmd in docker python3 getent; do
