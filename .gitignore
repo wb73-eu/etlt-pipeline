@@ -1,0 +1,6 @@
+.env
+.venv/
+spark/.ivy/
+postgres-data/
+minio-data/
+airflow/logs/

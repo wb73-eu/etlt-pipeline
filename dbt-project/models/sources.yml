@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: sch_cleaned_data
+    schema: sch_cleaned_data
+    description: "This is the silver table containing data from Spark."
+    tables:
+      - name: silver_table
+        description: "This table contains the cleaned flight data from Spark."
+      - name: airports_table
+        description: "This table contains the cleaned airports data from Spark."

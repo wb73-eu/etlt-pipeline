@@ -1,0 +1,12 @@
+my_project:
+  outputs:
+    dev:
+      dbname: postgres
+      host: app-postgres
+      password: secret
+      port: 5432
+      schema: sch_cleaned_data
+      threads: 4
+      type: postgres
+      user: postgres
+  target: dev
