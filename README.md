@@ -26,6 +26,7 @@ An end-to-end ETLT (Extract, Transform, Load, Transform) pipeline processing 7 m
 - `top5_airports_flights` — filters flights from the 5 busiest airports
 
 **Gold tables**
+
 - `flights_late_binary` — adds a binary flag for delayed departures
 - `top_airports` — counts flights per airport (origin & destination)
 - `avg_delay_per_airline` — average departure delay per airline
@@ -34,40 +35,35 @@ An end-to-end ETLT (Extract, Transform, Load, Transform) pipeline processing 7 m
 ## Setup
 
 ### Requirements
+
 - Docker + Docker Compose
 
 ### Steps
 
 1. Clone the repo:
 
-`git clone https://github.com/wb73-eu/etlt-pipeline.git
-cd etlt-pipeline`
+```bash
+git clone https://github.com/wb73-eu/etlt-pipeline.git
+cd etlt-pipeline
+```
 
-2. Copy the env file and fill in the values:
+2. Download the dataset from [Kaggle - Flight Data 2024](https://www.kaggle.com/datasets/hrishitpatil/flight-data-2024) and place `flight_data_2024.csv` in the `minio-data/` folder.
 
-`cp .env.example .env`
+3. Run the setup script:
 
-  | Variable | Description | How to get it |
-   |---|---|---|
-   | `AIRFLOW_UID` | Your local user ID | Run `id -u` |
-   | `DOCKER_GID` | Docker group ID | Run `getent group docker \| cut -d: -f3` |
-   | `_PIP_ADDITIONAL_REQUIREMENTS` | Airflow extra packages | Already set in `.env.example` |
-   | `AIRFLOW__API__SECRET_KEY` | Airflow API secret | Run `python3 -c "import secrets; print(secrets.token_hex(32))"` |
+```bash
+chmod +x run.sh
+./run.sh
+```
 
-3. Create the required folders if they don't exist:
+This will automatically:
+- Generate your `.env` with the correct values
+- Create the required folders (`airflow/logs`, `minio-data`)
+- Start all services via Docker Compose
 
-`mkdir -p airflow/logs minio-data`
-
-3. Download the dataset from [Kaggle - Flight Data 2024](https://www.kaggle.com/datasets/hrishitpatil/flight-data-2024) and place `flight_data_2024.csv` in the `minio-data/` folder.
-
-4. Start the pipeline:
-
-`docker compose up`
-
-5. Upload the dataset:
-   - Download the dataset from [Kaggle - Flight Data 2024](https://www.kaggle.com/datasets/hrishitpatil/flight-data-2024)
+4. Upload the dataset:
    - Open MinIO at `http://localhost:9001` (credentials: `minio` / `secretpassword`)
    - Create a bucket named `bucket`
    - Upload `flight_data_2024.csv` to the bucket
 
-6. Open Airflow at `http://localhost:8080` (credentials: `airflow` / `airflow`), enable and trigger your DAG.
+5. Open Airflow at `http://localhost:8080` (credentials: `airflow` / `airflow`), enable and trigger your DAG.
