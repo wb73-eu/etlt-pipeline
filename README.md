@@ -58,4 +58,4 @@ cd etlt-pipeline
    - Create a bucket named `bucket`
    - Upload `flight_data_2024.csv` to the bucket
 
-4. Open Airflow at `http://localhost:8080` (credentials: `airflow` / `airflow`), enable and trigger your DAG.
+4. Open Airflow at `http://localhost:8080` (credentials: `airflow` / `airflow`), enable and trigger the `etlt_pipeline` DAG.
