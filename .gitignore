@@ -3,4 +3,4 @@
 spark/.ivy/
 postgres-data/
 minio-data/
-airflow/logs/airflow/config/airflow.cfg
+airflow/config/airflow.cfg
