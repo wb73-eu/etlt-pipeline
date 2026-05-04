@@ -47,9 +47,7 @@ git clone https://github.com/wb73-eu/etlt-pipeline.git
 cd etlt-pipeline
 ```
 
-2. Download the dataset from [Kaggle - Flight Data 2024](https://www.kaggle.com/datasets/hrishitpatil/flight-data-2024) and place `flight_data_2024.csv` in the `minio-data/` folder.
-
-3. Run the setup script:
+2. Run the setup script:
 
 ```bash
 chmod +x run.sh
@@ -61,9 +59,9 @@ This will automatically:
 - Create the required folders (`airflow/logs`, `minio-data`)
 - Start all services via Docker Compose
 
-4. Upload the dataset:
+3. Download the dataset from [Kaggle - Flight Data 2024](https://www.kaggle.com/datasets/hrishitpatil/flight-data-2024) and upload it to MinIO:
    - Open MinIO at `http://localhost:9001` (credentials: `minio` / `secretpassword`)
    - Create a bucket named `bucket`
    - Upload `flight_data_2024.csv` to the bucket
 
-5. Open Airflow at `http://localhost:8080` (credentials: `airflow` / `airflow`), enable and trigger your DAG.
+4. Open Airflow at `http://localhost:8080` (credentials: `airflow` / `airflow`), enable and trigger your DAG.
